@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to qoute"), qoute_path(@qoute) %>
+
+  <div class="header">
+    <h1>Edit qoute</h1>
+  </div>
+
+  <%= render "form", qoute: @qoute %>
+</main>

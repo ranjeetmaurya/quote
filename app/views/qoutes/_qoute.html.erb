@@ -1,0 +1,12 @@
+<div class="qoute">
+  <%= link_to qoute.name, qoute_path(qoute) %>
+  <div class="qoute__actions">
+    <%= button_to "Delete",
+                  qoute_path(qoute),
+                  method: :delete,
+                  class: "btn btn--light" %>
+    <%= link_to "Edit",
+                edit_qoute_path(qoute),
+                class: "btn btn--light" %>
+  </div>
+</div>
