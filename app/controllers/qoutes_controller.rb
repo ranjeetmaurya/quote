@@ -18,7 +18,7 @@ class QoutesController < ApplicationController
     if @qoute.save
       redirect_to qoutes_path, notice: "Qoute was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class QoutesController < ApplicationController
     if @qoute.update(qoute_params)
       redirect_to qoutes_path, notice: "Qoute was successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
