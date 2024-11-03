@@ -1,0 +1,2 @@
+chmod +x bin/dev
+foreman start -f Procfile.dev
