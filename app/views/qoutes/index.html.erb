@@ -1,10 +1,15 @@
+<%= turbo_stream_from "qoutes" %>
+
 <main class="container">
   <div class="header">
     <h1>Qoutes</h1>
     <%= link_to "New qoute",
                 new_qoute_path,
-                class: "btn btn--primary" %>
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(Qoute.new) } %>
   </div>
-
-  <%= render @qoutes %>
+  <%= turbo_frame_tag Qoute.new %>
+  <%= turbo_frame_tag "qoutes" do %>
+    <%= render @qoutes %>
+  <% end %>
 </main>

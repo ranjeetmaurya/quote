@@ -3,18 +3,18 @@ require "application_system_test_case"
 class QoutesTest < ApplicationSystemTestCase
 
   setup do 
-    @qoute = qoutes(:first) 
+    @qoute = Qoute.ordered.first
   end
 
   test "Creating a new Qoute" do
-    visit qoutes_url
+    visit quotes_path
     assert_selector "h1", text: "Qoutes"
     click_on "New qoute"
-    assert_selector "h1", text: "New qoute"
-    fill_in "Name", with: "Capybara qoute"
-    click_on "Create Qoute"
-    assert_selector "h1", text: "Qoutes"
-    assert_text "Capybara qoute"
+    fill_in "Name", with: "Capybara quote"
+    assert_selector "h1", text: "Quotes"
+    click_on "Create quote"
+    assert_selector "h1", text: "Quotes"
+    assert_text "Capybara quote"
   end
 
   test "Showing a qoute" do 
@@ -24,21 +24,25 @@ class QoutesTest < ApplicationSystemTestCase
   end
 
   test "Updating a qoute" do 
-    visit qoutes_path
-    assert_selector "h1", text: "Qoutes"
+    visit quotes_path
+    assert_selector "h1", text: "Quotes"
+
     click_on "Edit", match: :first
-    assert_selector "h1", text: "Edit qoute"
-    fill_in "Name", with: "Updated Qoute"
-    click_on "Update Qoute"
-    assert_selector "h1", text: "Qoutes"
-    assert_text "Updated Qoute"
+    fill_in "Name", with: "Updated quote"
+
+    assert_selector "h1", text: "Quotes"
+    click_on "Update quote"
+
+    assert_selector "h1", text: "Quotes"
+    assert_text "Updated quote"
   end
 
   test "Destroying a qoute" do 
-    visit qoutes_path
-    assert_text @qoute.name
+    visit quotes_path
+    assert_text @quote.name
+
     click_on "Delete", match: :first
-    assert_no_text @qoute.name
+    assert_no_text @quote.name
   end
 
 end

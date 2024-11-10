@@ -5,5 +5,7 @@
     <h1>Edit qoute</h1>
   </div>
 
-  <%= render "form", qoute: @qoute %>
+  <%= turbo_frame_tag @qoute do %>
+    <%= render "form", qoute: @qoute %>
+  <% end %>  
 </main>

@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "qoutes", partial: "qoutes/qoute", locals: { qoute: @qoute } %>
+<%= turbo_stream.update Qoute.new, "" %>

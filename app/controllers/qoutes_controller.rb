@@ -2,7 +2,7 @@ class QoutesController < ApplicationController
 	before_action :set_qoute, only: [:show, :edit, :update, :destroy]
 
   def index
-    @qoutes = Qoute.all
+    @qoutes = Qoute.ordered
   end
 
   def show
@@ -16,7 +16,10 @@ class QoutesController < ApplicationController
     @qoute = Qoute.new(qoute_params)
 
     if @qoute.save
-      redirect_to qoutes_path, notice: "Qoute was successfully created."
+      respond_to do |format|
+        format.html { redirect_to qoutes_path, notice: "Qoute was successfully created." } 
+        format.turbo_stream
+      end      
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +38,11 @@ class QoutesController < ApplicationController
 
   def destroy
     @qoute.destroy
-    redirect_to qoutes_path, notice: "Qoute was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to qoutes_path, notice: "Qoute was successfully destroyed." } 
+      format.turbo_stream
+    end
+    
   end
 
   private
